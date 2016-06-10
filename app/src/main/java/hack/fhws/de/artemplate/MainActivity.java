@@ -34,34 +34,16 @@ public class MainActivity extends AppCompatActivity implements APIRequests.Pinnw
         }catch (IOException e) {
             e.printStackTrace();
         }
-        //Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
-        //startActivityForResult(i, 2);
+        //Intent intent1 = new Intent(getApplicationContext(),UserInfoActivity.class);
+        //startActivity(intent1);
 
-        but=(Button)findViewById(R.id.but);
         but2=(Button)findViewById(R.id.but2);
-        but.setOnClickListener(new View.OnClickListener() {
-                                      public void onClick(View v) {
-                                          Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
-                                          startActivityForResult(i, 2);
-                                      }
-        });
-
         but2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),PinwandActivity.class);
-                startActivity(i);
+                Intent intent2 = new Intent(getApplicationContext(),PinwandActivity.class);
+                startActivity(intent2);
             }
         });
-        }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        // check if the request code is same as what is passed  here it is 2
-        if(requestCode==2)
-        {
-        }
     }
 
     //Dont forget to  override the lifecycle events and to trigger them on the archtiectView

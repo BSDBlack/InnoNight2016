@@ -27,7 +27,7 @@ public class NoteDialogFragment extends android.app.DialogFragment {
         final View view = inflater.inflate(R.layout.dialog_note, null);
         builder.setTitle("Note erstellen");
 
-            // Inflate and set the layout for the dialog
+        // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(view)
                 // Add action buttons
