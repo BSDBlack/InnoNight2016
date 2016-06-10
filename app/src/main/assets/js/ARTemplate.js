@@ -48,7 +48,7 @@ var World = {
 		var imageResource = new AR.ImageResource("assets/cat.jpg")
 		this.modelKatze = new AR.ImageDrawable(imageResource, 5, {
                          offsetX : 1,
-                         onClick : function() {e
+                         onClick : function() {
                              // 'this' represents the ImageDrawable
                              this.rotation += 10;
                            }
