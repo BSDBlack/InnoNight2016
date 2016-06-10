@@ -7,9 +7,19 @@ import java.util.ArrayList;
  */
 public class NoteDatabase {
 
+    private static NoteDatabase instance;
+
     private ArrayList<Note> savednotes;
 
-    public NoteDatabase() {
+    public static NoteDatabase getInstance(){
+        if (instance==null)
+        {
+            instance=new NoteDatabase();
+        }
+        return instance;
+    }
+
+    private NoteDatabase() {
         savednotes = new ArrayList<>();
         savednotes.addAll(Note.getInitialNotes());
     }
