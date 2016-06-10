@@ -36,6 +36,23 @@ var World = {
 			}
 		});
 
+        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Remaining Time</h1></div>"}, 1, {
+            offsetX : 0,
+            scale: 1,
+            horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
+            opacity : 0.9
+        });
+
+		var imageResource = new AR.ImageResource("assets/cat.jpg")
+		this.modelKatze = new AR.ImageDrawable(imageResource, 5, {
+                         offsetX : 1,
+                         rotation : 190,
+                         onClick : function() {
+                             // 'this' represents the ImageDrawable
+                             this.rotation += 10;
+                           }
+                       });
+
 		/*
 			As a next step, an appearing animation is created. For more information have a closer look at the function implementation.
 		*/
@@ -45,13 +62,45 @@ var World = {
 		/*
 			To receive a notification once the image target is inside the field of vision the onEnterFieldOfVision trigger of the AR.Trackable2DObject is used. In the example the function appear() is attached. Within the appear function the previously created AR.AnimationGroup is started by calling its start() function which plays the animation once.
 		*/
-		var trackable = new AR.Trackable2DObject(this.tracker, "*", {
+		var trackableBewertung = new AR.Trackable2DObject(this.tracker, "MarkerBewertung", {
 			drawables: {
 				cam: [this.model]
 			},
 			onEnterFieldOfVision: this.appear,
 			onExitFieldOfVision: this.disappear
 		});
+
+		var trackableDozent = new AR.Trackable2DObject(this.tracker, "MarkerDozent", {
+        			drawables: {
+        				cam: [this.model]
+        			},
+        			onEnterFieldOfVision: this.appear,
+        			onExitFieldOfVision: this.disappear
+        		});
+        var trackablePinnwand = new AR.Trackable2DObject(this.tracker, "MarkerPinnwand", {
+        			drawables: {
+        				cam: [this.modelUhr]
+        			},
+        			onEnterFieldOfVision: function() {
+        			    AR.logger.debug("Display Pinnwand");
+        			}
+        		});
+        var trackablePostfach = new AR.Trackable2DObject(this.tracker, "MarkerPostfach", {
+        			drawables: {
+        				cam: [this.modelKatze]
+        			}
+        		});
+        var trackableUhr = new AR.Trackable2DObject(this.tracker, "MarkerUhr", {
+        			drawables: {
+        				cam: [this.modelUhr]
+        			}
+        		});
+        var trackableVorlesung = new AR.Trackable2DObject(this.tracker, "MarkerVorlesung", {
+        			drawables: {
+        				cam: [this.modelKatze]
+        			}
+        		});
+
 	},
 
 	showNotification: function showNotification() {
