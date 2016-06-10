@@ -1,7 +1,14 @@
 package hack.fhws.de.artemplate;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
@@ -9,6 +16,7 @@ import com.wikitude.architect.StartupConfiguration;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+    Button but,but2;
 
     private ArchitectView architectView;
     @Override
@@ -24,6 +32,32 @@ public class MainActivity extends AppCompatActivity {
             this.architectView.load("ARTemplate.html");
         }catch (IOException e) {
             e.printStackTrace();
+        }
+
+        but=(Button)findViewById(R.id.but);
+        but2=(Button)findViewById(R.id.but2);
+        but.setOnClickListener(new View.OnClickListener() {
+                                      public void onClick(View v) {
+                                          Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
+                                          startActivityForResult(i, 2);
+                                      }
+        });
+
+        but2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),PinwandActivity.class);
+                startActivity(i);
+            }
+        });
+        }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2)
+        {
         }
     }
 

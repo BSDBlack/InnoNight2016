@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ARTemplate</string>
+
+    <!--Userinfo fields-->
+    <string name="user_name">Username</string>
+    <string name="user_email">Email</string>
+    <string name="user_semester">Semester</string>
+    <string name="user_studienfach">Studienfach</string>
+
+    <!--Userinfo header-->
+    <string name="user_info_header">Userinfo</string>
+
+
 </resources>
