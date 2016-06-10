@@ -1,5 +1,3 @@
-var remainTime=10;
-
 var World = {
 	loaded: false,
 	rotating: false,
@@ -38,12 +36,7 @@ var World = {
 			}
 		});
 
-        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Noch " + remainTime + " Minuten</h1></div>"}, 1, {
-            offsetX : 0,
-            scale: 1,
-            onLoaded: function() {
-                document.location = "architectsdk://getRemainTime";
-            },
+        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Noch 10 Minuten</h1></div>"}, 1, {
             horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
             opacity : 0.9
         });
@@ -51,20 +44,38 @@ var World = {
 		var imageResource = new AR.ImageResource("assets/cat.jpg")
 		this.modelKatze = new AR.ImageDrawable(imageResource, 5, {
                          offsetX : 1,
-                         rotation : 190,
-                         onClick : function() {
+                         onClick : function() {e
                              // 'this' represents the ImageDrawable
                              this.rotation += 10;
                            }
                        });
         var bewertungsImage = new AR.ImageResource("assets/cat.jpg");
-        this.modelBewertung= thi.s.AR.ImageDrawable(bewertungsImage, 5, {
-                        offsetX  1,
-                        rotation: 190,
+        this.modelBewertung= new AR.ImageDrawable(bewertungsImage, 5, {
+                        offsetX:  1,
                         onClick: function() {
                             this.rotation += 10;
                             }
                         });
+
+        this.modelBraun = new AR.HtmlDrawable({uri: "https://www.welearn.de/fakultaet-iw/personen/details/person/prof-dr-peter-braun.html"}, 1, {
+            viewportWidth: 1024,
+            viewportHeight: 1024,
+            scale: 2,
+            offsetX: -1,
+          onClick : function() {
+            window.open("mailto:peter.braun@fhws.de");
+          },
+          horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
+          opacity : 0.9
+        });
+
+        var imgAckermann = new AR.ImageResource("assets/Ackermann.png");
+        this.modelAcker = new AR.ImageDrawable(imgAckermann, 5, {
+            offsetX: 0
+        });
+        var imgVorlesung = new AR.ImageResource("assets/vorlesung2.png");
+        this.modelVorlesung = new AR.ImageDrawable(imgVorlesung, 5, {
+        offsetX: 0});
 		/*
 			As a next step, an appearing animation is created. For more information have a closer look at the function implementation.
 		*/
@@ -76,7 +87,7 @@ var World = {
 		*/
 		var trackableBewertung = new AR.Trackable2DObject(this.tracker, "MarkerBewertung", {
 			drawables: {
-				cam: [this.model]
+				cam: [this.modelVorlesung]
 			},
 			onEnterFieldOfVision: this.appear,
 			onExitFieldOfVision: this.disappear
@@ -84,17 +95,14 @@ var World = {
 
 		var trackableDozent = new AR.Trackable2DObject(this.tracker, "MarkerDozent", {
         			drawables: {
-        				cam: [this.model]
+        				cam: [this.modelBraun]
         			},
         			onEnterFieldOfVision: this.appear,
         			onExitFieldOfVision: this.disappear
         		});
         var trackablePinnwand = new AR.Trackable2DObject(this.tracker, "MarkerPinnwand", {
         			drawables: {
-        				cam: [this.modelUhr]
-        			},
-        			onEnterFieldOfVision: function() {
-        			    AR.logger.debug("Display Pinnwand");
+        				cam: [this.modelPinnwand]
         			}
         		});
         var trackablePostfach = new AR.Trackable2DObject(this.tracker, "MarkerPostfach", {
@@ -109,7 +117,7 @@ var World = {
         		});
         var trackableVorlesung = new AR.Trackable2DObject(this.tracker, "MarkerVorlesung", {
         			drawables: {
-        				cam: [this.modelKatze]
+        				cam: [this.modelAcker]
         			}
         		});
 

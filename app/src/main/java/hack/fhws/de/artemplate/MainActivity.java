@@ -15,7 +15,7 @@ import com.wikitude.architect.StartupConfiguration;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements APIRequests.PinnwandOpener {
     Button but,but2;
 
     private ArchitectView architectView;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
-        APIRequests.setView(architectView);
+        APIRequests.main = this;
         architectView.callJavascript("remainTime=60;");
         final StartupConfiguration config = new StartupConfiguration("mH7+xbxGxP1YKsCLSjCUixKJMmaxwzM9qbXZZDJov1bR6LG0YfyH2WX9gVa3u3E51eGtum5CnO7OpYVcV65hHphO1HSJdgV7oOt7EYKF9uTPoZOfBTJc2jwRPciFWsG3yYIJ9aQI+SUCO+HCoa/hkMUlL8WEXHLcTtsCFjhuu+dTYWx0ZWRfX4AQpyO23RQvV5GAvqSh7YgQs7hMlU7qJzhM0oEA0g8B1iG3UiRnU4hC8cBpUk1WPadlmuDq04U1CRpdwidsKgClRhwgEWJH1IMQSpt3QGzcIWoAT0CkwuDHGmO40tScRpIAdTQPGSTP8DDcMIkrmOQvOep+vkGxw/RxlO54GD+utVMrwLSvF4JXmvNYhKGF1ud14JOecm1NRvdFYrfoKBNKK5n+jKwsULqyHWOCBy+sZGxtN/t3AG9jwMXgGIE7tmASAL+Xam+3I/pHpPECpek7suiaWFDX041Nuwv7KUQ7vF/iqOIzCr1moyfC1SfIh07Vc1GoOAUyNeLo57dc2DzJtvVeJIHNoRJ45Drl59s6slFvmzMb7YwfOvWpgNCufEtp+bZ0iyJobrwbqf27mt+5rQB9I65fp5Pl1K/7z/nnBSERV67RUa6lpcFiDZyl8q6GB5K1fWUN/pYmbq59BmewvL6BAkhLR42jWfM8TU7ooXndBWA0V/k=");
         this.architectView.onCreate( config );
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         but2=(Button)findViewById(R.id.but2);
         but.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
-                                          Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
-                                          startActivityForResult(i, 2);
+                                          //Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
+                                          //startActivityForResult(i, 2);
                                       }
         });
 
@@ -82,5 +82,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         this.architectView.onDestroy();
+    }
+
+    @Override
+    public void openPinnwand() {
+        Intent intent = new Intent(MainActivity.this, PinwandActivity.class);
+        startActivity(intent);
     }
 }
