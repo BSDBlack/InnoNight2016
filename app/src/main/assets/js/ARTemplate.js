@@ -1,3 +1,5 @@
+var remainTime=10;
+
 var World = {
 	loaded: false,
 	rotating: false,
@@ -36,9 +38,12 @@ var World = {
 			}
 		});
 
-        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Remaining Time</h1></div>"}, 1, {
+        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Noch " + remainTime + " Minuten</h1></div>"}, 1, {
             offsetX : 0,
             scale: 1,
+            onLoaded: function() {
+                document.location = "architectsdk://getRemainTime";
+            },
             horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
             opacity : 0.9
         });
@@ -52,7 +57,14 @@ var World = {
                              this.rotation += 10;
                            }
                        });
-
+        var bewertungsImage = new AR.ImageResource("assets/cat.jpg");
+        this.modelBewertung= thi.s.AR.ImageDrawable(bewertungsImage, 5, {
+                        offsetX  1,
+                        rotation: 190,
+                        onClick: function() {
+                            this.rotation += 10;
+                            }
+                        });
 		/*
 			As a next step, an appearing animation is created. For more information have a closer look at the function implementation.
 		*/
