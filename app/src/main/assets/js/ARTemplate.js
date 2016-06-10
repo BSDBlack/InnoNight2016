@@ -36,9 +36,13 @@ var World = {
 			}
 		});
 
-        this.modelUhr = new AR.HtmlDrawable({html: "<div style='color:red'><h1>Noch 10 Minuten</h1></div>"}, 1, {
-            horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
-            opacity : 0.9
+        this.modelUhr = new AR.HtmlDrawable({html: "<div><h1>Noch 5 Minuten</h1></div>"}, 1, {
+            viewportWidth: 1024,
+            viewportHeight: 1024,
+            scale: 2,
+            offsetX: -1,
+          horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
+          opacity : 0.9
         });
 
 		var imageResource = new AR.ImageResource("assets/cat.jpg")
