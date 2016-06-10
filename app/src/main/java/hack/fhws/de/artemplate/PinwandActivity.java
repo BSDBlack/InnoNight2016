@@ -1,6 +1,7 @@
 package hack.fhws.de.artemplate;
 
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +12,8 @@ import android.view.View;
 
 import java.util.List;
 
-public class PinwandActivity extends AppCompatActivity{
+
+public class PinwandActivity extends AppCompatActivity {
 
     private NoteDatabase db = NoteDatabase.getInstance();
     private List<Note> NotesList = db.load();
@@ -50,19 +52,5 @@ public class PinwandActivity extends AppCompatActivity{
 
     }
 
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        // Stuff to do, dependent on requestCode and resultCode
-        if(requestCode == 1)  // 1 is an arbitrary number, can be any int
-        {
-            // This is the return result of your DialogFragment
-            if(resultCode == 1) // 1 is an arbitrary number, can be any int
-            {
-                // Now do what you need to do after the dialog dismisses.
-            }
-        }
-    }
 
 }

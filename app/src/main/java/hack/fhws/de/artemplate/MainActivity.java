@@ -34,15 +34,17 @@ public class MainActivity extends AppCompatActivity implements APIRequests.Pinnw
         }catch (IOException e) {
             e.printStackTrace();
         }
+        Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
+        startActivityForResult(i, 2);
 
-        but=(Button)findViewById(R.id.but);
+        //but=(Button)findViewById(R.id.but);
         but2=(Button)findViewById(R.id.but2);
-        but.setOnClickListener(new View.OnClickListener() {
+        /*but.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
                                           Intent i = new Intent(getApplicationContext(),UserInfoActivity.class);
                                           startActivityForResult(i, 2);
                                       }
-        });
+        });*/
 
         but2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
