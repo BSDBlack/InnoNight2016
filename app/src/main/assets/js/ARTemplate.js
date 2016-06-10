@@ -37,8 +37,8 @@ var World = {
 		});
 
         this.modelUhr = new AR.HtmlDrawable({html: "<div><h1>Noch 5 Minuten</h1></div>"}, 1, {
-            viewportWidth: 1024,
-            viewportHeight: 1024,
+            viewportWidth: 128,
+            viewportHeight: 128,
             scale: 2,
             offsetX: -1,
           horizontalAnchor : AR.CONST.HORIZONTAL_ANCHOR.LEFT,
@@ -74,12 +74,13 @@ var World = {
         });
 
         var imgAckermann = new AR.ImageResource("assets/Ackermann.png");
-        this.modelAcker = new AR.ImageDrawable(imgAckermann, 5, {
+        this.modelAcker = new AR.ImageDrawable(imgAckermann, 1, {
             offsetX: 0
         });
         var imgVorlesung = new AR.ImageResource("assets/vorlesung2.png");
-        this.modelVorlesung = new AR.ImageDrawable(imgVorlesung, 5, {
-        offsetX: 0});
+        this.modelVorlesung = new AR.ImageDrawable(imgVorlesung, 1, {
+            scale: 0.75,
+            offsetX: 0});
 		/*
 			As a next step, an appearing animation is created. For more information have a closer look at the function implementation.
 		*/

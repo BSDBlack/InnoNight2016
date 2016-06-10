@@ -39,8 +39,6 @@ public class NoteDialogFragment extends android.app.DialogFragment {
                         final String text  = editText.getText().toString();
                         NoteDatabase.getInstance().save(new Note(text));
 
-                        getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
-
                         dismiss();
 
                     }
